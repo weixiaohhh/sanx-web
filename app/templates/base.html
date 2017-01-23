@@ -1,0 +1,181 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>wex</title>
+        <!-- ======== META TAGS ======== -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta charset="utf-8">
+        <meta name="description" content="House. Responsive Template.">
+        <meta name="keywords" content="my, tags">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- ======== / META TAGS ======== -->
+        <!-- ======== STYLESHEETS ======== -->
+        <link rel="stylesheet" href="{{url_for('static', filename = 'assets/css/reset.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='assets/css/font-awesome.min.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='assets/css/lightbox.min.css')}}" type="text/css">
+		<link rel="stylesheet" href="{{url_for('static',filename='assets/css/owl.carousel.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Alike" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <noscript>
+
+        </noscript>
+        <!--[if lt IE 9]>
+                <link rel="stylesheet" type="text/css" href="http://house.studio-themes.com/assets/css/ie.css">
+        <![endif]-->
+        <!-- ======== / STYLESHEETS ======== -->
+        <!-- ======== STANDARD SCRIPTS ======== -->
+        <script src="{{url_for('static',filename='assets/js/jquery.js')}}"></script>
+        <!--[if lt IE 9]>
+                <script src="url_for('static',filename='assets/js/html5shiv.js')}}"></script>
+                <script src="url_for('static',filename='assets/js/respond.js')}}"></script>
+        <![endif]-->
+        <!-- ======== / STANDARD SCRIPTS ======== -->
+
+    </head>
+    <body>
+		<div id="preloader"></div>
+		<div id="page-container">
+			<header id="home" class="header-style-1 sticky">
+				<div class="container">
+					<div class="row">
+
+
+						<div class="col-md-12 clearfix">
+							<!-- logo-->
+							<div id="logo-container">
+								<div class="tb">
+									<div class="tb-cell">
+										<a href="index.html">
+											<img src="{{url_for('static',filename='assets/img/logo5.png')}}" class="standard-logo" alt="">
+										</a>
+									</div>
+								</div>
+								<div id="mobile-button">
+									<hr><hr><hr>
+								</div>
+							</div>
+							<!-- 菜单栏 -->
+                                {% block navbar %}
+
+							<div id="menu-container">
+								<nav>
+									<ul class="clearfix">
+										<li class="current-menu-item"><a href="{{url_for('index')}}">Home</a>
+
+										</li>
+
+
+										<li><a href="about.html">About Me</a></li>
+										<li><a href="{{url_for('contact')}}">Contact</a></li>
+                                        {% if current_user.is_authenticated %}
+										<li><a href="{{url_for('admin.index')}}">Admin</a></li>
+                                        {% endif %}
+									</ul>
+								</nav>
+							</div>
+                            {%- endblock navbar %}
+						</div>
+					</div>
+				</div>
+			</header>
+			<!-- 图片区 -->
+
+			<section id="section-featured" class="clearfix">
+				<div id="prev-owl">
+					<i class="fa fa-chevron-left"></i>
+				</div>
+				<div id="next-owl">
+					<i class="fa fa-chevron-right"></i>
+				</div>
+				<div id="featured">
+					{% for pic_content in g.pic_contents %}
+					<div>
+						<a href="{{url_for('post',id=pic_content.id)}}"><img src="{{pic_content.pic_url}}" alt=""></a>
+						<span>{{pic_content.pic_desc}}</span>
+					</div>
+					{% endfor %}
+				</div>
+			</section>
+
+			{% block page %}
+
+			{% endblock %}
+			<footer id="footer-main">
+				<div class="container">
+					<div class="row">
+						<div id="foot-left" class="col-lg-6 col-sm-6">
+
+							<p>© 2015 wex. All Rights Reserved.</p>
+						</div>
+						<div id="foot-right" class="col-lg-6 col-sm-6">
+							<a href="#" class="social-1"><i class="fa fa-facebook"></i></a>
+							<a href="#" class="social-1"><i class="fa fa-twitter"></i></a>
+							<a href="#" class="social-1"><i class="fa fa-google-plus"></i></a>
+							<a href="#" class="social-1"><i class="fa fa-linkedin"></i></a>
+							<a href="#" class="social-1"><i class="fa fa-pinterest"></i></a>
+							<a href="#" class="social-1"><i class="fa fa-tumblr"></i></a>
+							<a href="#" class="social-1"><i class="fa fa-instagram"></i></a>
+							<a href="#" class="social-1"><i class="fa fa-rss"></i></a>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- 设置框-->
+	<div id="style-switcher">
+			<span>
+				<i class="fa fa-cog"></i>
+			</span>
+			<section>
+				<header>
+					<h6>Style selector</h6>
+					<hr>
+				</header>
+				<div>
+					<h6>Layout</h6>
+					<select>
+						<option selected="selected">Boxed</option>
+						<option>Wide</option>
+					</select>
+				</div>
+				<div>
+					<h6>Patterns</h6>
+
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/patterns/1.jpg')}}" alt="" data-background="bg1">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/patterns/2.jpg')}}" alt="" data-background="bg2">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/patterns/3.jpg')}}" alt="" data-background="bg3">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/patterns/4.jpg')}}" alt="" data-background="bg4">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/patterns/5.jpg')}}" alt="" data-background="bg5">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/patterns/6.jpg')}}" alt="" data-background="bg6">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/patterns/7.jpg')}}" alt="" data-background="bg7">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/patterns/8.jpg')}}" alt="" data-background="bg8">
+				</div>
+				<div>
+
+					<h6>Images</h6>
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/images/1.jpg')}}" alt="" data-background="bg9">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/images/2.jpg')}}" alt="" data-background="bg10">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/images/3.jpg')}}" alt="" data-background="bg11">
+					<img src="{{url_for('static', filename = 'assets/img/styleselector/images/4.jpg')}}" alt="" data-background="bg12">
+				</div>
+			</section>
+
+
+		</div>
+        <!-- ======== OTHER SCRIPTS ======== -->
+
+        <script src="{{url_for('static',filename='assets/js/plugins.js')}}"></script>
+        <script src="{{url_for('static',filename='assets/js/scripts.js')}}"></script>
+
+        <!-- ======== /OTHER SCRIPTS ======== -->
+	{% for message in get_flashed_messages() %}
+			<div class="alert alert-warning">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			{{ message }}
+			</div>
+		{% endfor %}
+    </body>
+</html>

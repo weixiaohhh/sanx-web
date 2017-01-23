@@ -1,0 +1,3 @@
+收到来自{{email}}{{name}}的联系
+他的问题:{{message}}
+他的联系网站：{{website}}

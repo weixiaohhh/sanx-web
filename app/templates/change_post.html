@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% import "_macros.html" as macros %}
+
+{% block page %}
+<section id="page">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 column">
+
+
+
+                            {% for post in posts %}
+							<article id="page-content" class="clearfix editor-styles">
+
+
+
+                            <h3><b>*</b><a href="{{url_for('post',id=post.id)}}">{{post.title}}</a></h3>
+                            <hr style=" borber:1px blue solid; " >
+                            </article>
+
+                            {% endfor %}
+
+						</div>
+					</div>
+				</div>
+			</section>
+
+
+{% endblock %}
